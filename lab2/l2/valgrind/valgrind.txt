@@ -1,0 +1,151 @@
+Notes:  "**"  was used to indicate a important point in valgrind. 
+
+valgrind v00
+
+		(14:28 steve@ant-box valgrind) > valgrind --tool=memcheck --leak-check=yes ./v0
+		==3294== Memcheck, a memory error detector
+		==3294== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+		==3294== Using Valgrind-3.12.0 and LibVEX; rerun with -h for copyright info
+		==3294== Command: ./v0
+		==3294== 
+		==3294== Invalid write of size 4
+		==3294==    at 0x400514: f (v00.c:7)
+		==3294==    by 0x40052A: main (v00.c:12)
+		==3294==  Address 0x51d5068 is 0 bytes after a block of size 40 alloc'd
+		==3294==    at 0x4C2AB8D: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+		==3294==    by 0x400507: f (v00.c:6)
+		==3294==    by 0x40052A: main (v00.c:12)
+		==3294== 
+		==3294== 
+		==3294== HEAP SUMMARY:
+		==3294==     in use at exit: 40 bytes in 1 blocks
+		==3294==   total heap usage: 1 allocs, 0 frees, 40 bytes allocated
+		==3294== 
+	**	==3294== 40 bytes in 1 blocks are definitely lost in loss record 1 of 1
+		==3294==    at 0x4C2AB8D: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+		==3294==    by 0x400507: f (v00.c:6)
+		==3294==    by 0x40052A: main (v00.c:12)
+		==3294== 
+		==3294== LEAK SUMMARY:
+		==3294==    definitely lost: 40 bytes in 1 blocks
+		==3294==    indirectly lost: 0 bytes in 0 blocks
+		==3294==      possibly lost: 0 bytes in 0 blocks
+		==3294==    still reachable: 0 bytes in 0 blocks
+		==3294==         suppressed: 0 bytes in 0 blocks
+		==3294== 
+		==3294== For counts of detected and suppressed errors, rerun with: -v
+		==3294== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+
+
+
+It was trying to access mem that did not belong to x and x was never closed.
+
+(fixed)
+		(14:41 steve@ant-box valgrind) > valgrind --tool=memcheck --leak-check=yes ./v0
+		==4487== Memcheck, a memory error detector
+		==4487== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+		==4487== Using Valgrind-3.12.0 and LibVEX; rerun with -h for copyright info
+		==4487== Command: ./v0
+		==4487== 
+		==4487== 
+		==4487== HEAP SUMMARY:
+		==4487==     in use at exit: 0 bytes in 0 blocks
+		==4487==   total heap usage: 1 allocs, 1 frees, 40 bytes allocated
+		==4487== 
+		==4487== All heap blocks were freed -- no leaks are possible
+		==4487== 
+		==4487== For counts of detected and suppressed errors, rerun with: -v
+		==4487== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+
+
+
+
+V5
+
+		X is zero(14:30 steve@ant-box valgrind) > valgrind --tool=memcheck --leak-check=yes ./v5
+		==3502== Memcheck, a memory error detector
+		==3502== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+		==3502== Using Valgrind-3.12.0 and LibVEX; rerun with -h for copyright info
+		==3502== Command: ./v5
+		==3502== 
+	**	==3502== Conditional jump or move depends on uninitialised value(s)
+		==3502==    at 0x400502: main (v05.c:6)
+		==3502== 
+		X is zero==3502== 
+		==3502== HEAP SUMMARY:
+		==3502==     in use at exit: 0 bytes in 0 blocks
+		==3502==   total heap usage: 1 allocs, 1 frees, 1,024 bytes allocated
+		==3502== 
+		==3502== All heap blocks were freed -- no leaks are possible
+		==3502== 
+		==3502== For counts of detected and suppressed errors, rerun with: -v
+		==3502== Use --track-origins=yes to see where uninitialised values come from
+		==3502== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+
+
+I did not get a runtime error. It seemed to run fine. But to fix it the x was not set to any number. It was just allocated space so it got an error. Giving x a value fixed it. 
+
+
+(fixed)
+		(14:37 steve@ant-box valgrind) > valgrind --tool=memcheck --leak-check=yes ./v5
+		==4242== Memcheck, a memory error detector
+		==4242== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+		==4242== Using Valgrind-3.12.0 and LibVEX; rerun with -h for copyright info
+		==4242== Command: ./v5
+		==4242== 
+		X is zero==4242== 
+		==4242== HEAP SUMMARY:
+		==4242==     in use at exit: 0 bytes in 0 blocks
+		==4242==   total heap usage: 1 allocs, 1 frees, 1,024 bytes allocated
+		==4242== 
+		==4242== All heap blocks were freed -- no leaks are possible
+		==4242== 
+		==4242== For counts of detected and suppressed errors, rerun with: -v
+		==4242== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+
+
+
+V6
+
+		(14:34 steve@ant-box valgrind) > valgrind --tool=memcheck --leak-check=yes ./v6
+		==3872== Memcheck, a memory error detector
+		==3872== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+		==3872== Using Valgrind-3.12.0 and LibVEX; rerun with -h for copyright info
+		==3872== Command: ./v6
+		==3872== 
+		==3872== Conditional jump or move depends on uninitialised value(s)
+	**	==3872==    at 0x400505: foo (v06.c:6)
+	**	==3872==    by 0x40052A: main (v06.c:15)
+		==3872== 
+		x is less than 10
+		==3872== 
+		==3872== HEAP SUMMARY:
+		==3872==     in use at exit: 0 bytes in 0 blocks
+		==3872==   total heap usage: 1 allocs, 1 frees, 1,024 bytes allocated
+		==3872== 
+		==3872== All heap blocks were freed -- no leaks are possible
+		==3872== 
+		==3872== For counts of detected and suppressed errors, rerun with: -v
+		==3872== Use --track-origins=yes to see where uninitialised values come from
+		==3872== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+
+X was not given a value so when it went in for the check 
+
+(Fixed)
+		(14:37 steve@ant-box valgrind) > valgrind --tool=memcheck --leak-check=yes ./v6
+		==4143== Memcheck, a memory error detector
+		==4143== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+		==4143== Using Valgrind-3.12.0 and LibVEX; rerun with -h for copyright info
+		==4143== Command: ./v6
+		==4143== 
+		==4143== 
+		==4143== HEAP SUMMARY:
+		==4143==     in use at exit: 0 bytes in 0 blocks
+		==4143==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+		==4143== 
+		==4143== All heap blocks were freed -- no leaks are possible
+		==4143== 
+		==4143== For counts of detected and suppressed errors, rerun with: -v
+		==4143== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

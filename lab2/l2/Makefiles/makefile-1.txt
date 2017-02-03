@@ -1,0 +1,25 @@
+# Run 'make', then 'touch one.h' and 'make' again.
+
+
+#0is the complier and it is made into a variable to make it easier to change the complier is needed
+CC=cc
+
+all: one # Default option. Will run the one procedure.
+
+one: one.o main.o two.o three.o #calls the 4 other procedures in this make file 
+	${CC} one.o main.o two.o three.o -o one # one the other procedures run through it combines all the complied files into one file.
+
+one.o: ext.h one.h one.c # if all these files are here run. (This will be the same for all the procedures below) 
+	${CC} -c one.c # Complies the one.c file (This will be the same for all the procedures below)
+ 
+main.o: ext.h one.h main.c
+	${CC} -c main.c 
+
+two.o: one.h two.c
+	${CC} -c two.c
+
+three.o: one.h three.c
+	${CC} -c three.c
+
+clean:  #Will delete the complied file and all out put files. (anything with the extention .o )
+	rm -f one *.o

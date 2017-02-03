@@ -1,0 +1,16 @@
+PROG=	test
+OBJS=	one.o main.o two.o three.o
+#CFLAGS=	-Wall -g
+
+all: ${PROG}
+
+${PROG}: ${OBJS}
+	@echo $@ depends on $?
+	${CC} ${LDFLAGS} ${OBJS} -o ${PROG}
+
+%.o: %.c ext.h one.h
+	$(CC) -c $(CFLAGS) -o $@ $<  # The $@ is the output file so it would be one when it compies one.o and the @< is the first pre-req so it would be one.o 
+	#Since it calls all the objects this will happen for each file it runs through.  
+
+clean:
+	rm -f ${PROG} ${OBJS}

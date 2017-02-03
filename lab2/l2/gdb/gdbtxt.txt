@@ -1,0 +1,114 @@
+
+GDB etox
+
+		Reading symbols from e...done.
+		(gdb) list
+		1	#include <stdio.h>
+		2	
+		3	double getvalue (double, int);
+		4	int factorial (int);
+		5	
+		6	int main ()
+		7	 {
+		8	  int n;
+		9	  double x;
+		10	  double series;
+		(gdb) b factorial
+		Breakpoint 1 at 0x4006e4: file etox.c, line 44.
+		(gdb) list 44
+		39	
+		40	int factorial (number)
+		41	int number;
+		42	 {
+		43	  int j;
+		44	  int fact = 0;
+		45	
+		46	  for (j = 1; j <= number; j++)
+		47	   {
+		48	    fact = fact * j;
+		(gdb) watch fact
+		No symbol "fact" in current context.
+		(gdb) r
+		`/home/steve/Dev/class/cs283/lab2/gdb/e' has changed; re-reading symbols.
+		Starting program: /home/steve/Dev/class/cs283/lab2/gdb/e 
+		This program calculates e^x
+		using sum of (x^k)/k!
+		Enter x, n : 1 2 
+		x,n =   1.0000    2
+
+		Breakpoint 1, factorial (number=0) at etox.c:44
+		44	  int fact = 1;
+		(gdb) print fact
+		$1 = 0
+
+
+Fact was starting as 0 and since it was always timing by it self the answer would always be zero and inf. 
+changing it to start at 1 solves the problem!
+
+
+
+
+GDB Code for g2: 
+
+			 file g1
+			A program is being debugged already.
+			Are you sure you want to change the file? (y or n) y
+			Load new symbol table from "g1"? (y or n) y
+			Reading symbols from g1...done.
+			(gdb) break 8
+			Note: breakpoints 2, 6 and 7 also set at pc 0x400610.
+			Breakpoint 8 at 0x400610: file g1.c, line 8.
+			(gdb) list
+			1	#include <ctype.h> 
+			2	#include <stdio.h> 
+			3	
+			4	int main () 
+			5	 {
+			6	  char c;
+			7	  c = fgetc (stdin) ;
+			8	  while (c != EOF) 
+			9	  if (isalnum (c) ) 
+			10	   printf ("%c\n", c) ;
+			(gdb) help catch
+			Set catchpoints to catch events.
+
+			List of catch subcommands:
+
+			catch assert -- Catch failed Ada assertions
+			catch catch -- Catch an exception
+			catch exception -- Catch Ada exceptions
+			catch exec -- Catch calls to exec
+			catch fork -- Catch calls to fork
+			catch load -- Catch loads of shared libraries
+			catch rethrow -- Catch an exception
+			catch signal -- Catch signals by their names and/or numbers
+			catch syscall -- Catch system calls by their names
+			catch throw -- Catch an exception
+			catch unload -- Catch unloads of shared libraries
+			catch vfork -- Catch calls to vfork
+
+			Type "help catch" followed by catch subcommand name for full documentation.
+			Type "apropos word" to search for commands related to "word".
+			Command name abbreviations are allowed if unambiguous.
+			(gdb) catch c
+			Catchpoint 9 (catch)
+			(gdb) run
+			The program being debugged has been started already.
+			Start it from the beginning? (y or n) y
+			Starting program: /home/steve/Dev/class/cs283/lab2/gdb/g1 g1
+
+			Breakpoint 1, main () at g1.c:7
+			7	  c = fgetc (stdin) ;
+			(gdb) n
+			test
+
+			Breakpoint 2, main () at g1.c:8
+			8	  while (c != EOF) 
+			(gdb) print c
+			$6 = 116 't'
+			(gdb) 
+
+
+
+The issue here is c is taking a C and you want to take in a string. It is only getting the first letter and repeating that since there is no end or advancement to C. The program is basically saying. Get first letter enter into terminal and repeat until you explode (inf). 
+
