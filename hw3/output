@@ -1,0 +1,16 @@
+GET /static.html HTTP/1.1
+
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/602.3.12 (KHTML, like Gecko) Version/10.0.2 Safari/602.3.12
+Accept-Language: en-us
+Cache-Control: max-age=0
+Accept-Encoding: gzip, deflate
+
+
+
+
+
+
+The browser is using html 1.1 as marked from the the request line. GET /static.html HTTP/1.1
