@@ -1,4 +1,5 @@
 #include <pthread.h>
+#include <inttypes.h>
 #include <stdlib.h>   
 #include <stdio.h>
 #define NUMTHRDS 4
@@ -8,20 +9,32 @@
    double *array_b;
    double big_sum;
    int veclen;
+
+   // I don't think this will be needed since arrays are global 
+   // stuct won't need to be passed
+   typedef struct s_dvec{
+   double ax;
+   double bx;
+   double ay;
+   double by; 
+   } dvec;
    
 
     void *dotprod(void *arg)
     {
      /* ... */
-     x = array_a;
-     y = array_b;
+     double * x = array_a;
+     double * y = array_b;
+     int i;
      /* ... */
-     mysum = 0;
-     for (i=start; i<end ; i++)
+     long mysum = 0;
+     for (i=0; i<NUMTHRDS*VECLEN ; i++)
       {
        mysum += (x[i] * y[i]);
       }
      /* ... */
+     int * bigsum = (int *)  mysum;
+     pthread_exit(bigsum);
      /* ... */
     }
    int main (int argc, char *argv[])
@@ -43,12 +56,16 @@
      /* ... */
      /* create threads */
      /* ... */
+     void * sum; 
      for(i=0;i<NUMTHRDS;i++)
       {
        /* Each thread works on a different set of data.
           The offset is specified by 'i'. The size of
           the data for each thread is indicated by VECLEN.
        */
+          pthread_create(&callThd[i],NULL,dotprod,NULL);
+          pthread_join(callThd[i],&sum); 
+          big_sum += (intptr_t) sum;
       }
      /* Wait on the other threads */
      /* ... */
