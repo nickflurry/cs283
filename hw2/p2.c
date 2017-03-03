@@ -5,7 +5,7 @@ int main (int argc, char **argv)
 	struct stat stat;
 	char *type, *readok;
 
-	Stat(argv[1], &stat);
+	Fstat(atoi(argv[1]), &stat);
 	if (S_ISREG(stat.st_mode)) /* Determine file type */
 	 	type = "regular";
 	else if (S_ISDIR(stat.st_mode))
