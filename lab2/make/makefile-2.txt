@@ -1,14 +1,14 @@
 #Variables
 PROG=	test
 OBJS=	one.o main.o two.o three.o
-CFLAGS=	-Wall -g
+
 
 #default is to run the main program. IN this case "test".  
 all: ${PROG}
 
 ${PROG}: ${OBJS} 
 	@echo $@ depends on $?   # prints out to terminal what files it depends on to complie
-	${CC} ${LDFLAGS} ${OBJS} -o ${PROG}  # complies the main program with the flags -Wall -g. It uses the files it depends on in the print above
+	${CC}  ${OBJS} -o ${PROG}  # complies the main program with the flags -Wall -g. It uses the files it depends on in the print above
 	# and will create the complied file with the name of the program "test"
 
 .c.o:
