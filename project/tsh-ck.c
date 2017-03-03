@@ -175,7 +175,27 @@ int main(int argc, char **argv)
 */
 void eval(char *cmdline)
  {
-  return;
+    
+    sigset_t mask; 
+    int bg;
+    pid_t pid;
+    char * argv[MAXARGS];
+
+
+    //buit-in command?
+    bg = parseline(cmdline, argv); 
+    if(!builtin_cmd(argv)) {
+        sigemptyset(&mask);
+        sigaddset(&mask, SIGCHLD);
+        sigprocmask(SIG_BLOCK, &mask, NULL);
+    
+    
+    
+    
+    }
+
+    return;
+
  }
 
 /*

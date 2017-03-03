@@ -1,0 +1,5 @@
+The system prints nothing because the thread was never joined with the main program. It ran its stuff and then terminated but the main program never knew what it was doing. It created it and then closed. 
+
+
+The one call you need is: 
+    Pthread_join(tid,NULL);

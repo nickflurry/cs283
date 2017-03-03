@@ -10,3 +10,7 @@ Run make to create both programs. Once they are complied you can run the program
 
 
 Error checking is light in these programs since there are countless cases and I only have so much time in the day. 
+
+The file output shows the output for the client program if you were to run the command shown above. 
+
+ServerOutput shows the output for the server connecting to it and asking for s.html

@@ -2,7 +2,7 @@
 
 int main (int argc, char **argv)
 {
-	struct stat stat;
+	struct stat Stat;
 	char *type, *readok;
 
 	Fstat(atoi(argv[1]), &stat);

@@ -1,0 +1,11 @@
+Connected to localhost.
+Escape character is '^]'.
+GET /s.html HTTP/1.1
+HTTP/1.0 200 OK
+Server: My Awesome Server
+Content-length: 62
+Content-type: 
+
+<h1>Hello World</h1>
+<p>This is more text. To text server</p>
+Connection closed by foreign host.
