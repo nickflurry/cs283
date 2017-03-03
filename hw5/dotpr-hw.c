@@ -1,12 +1,16 @@
-   #include <pthread.h>
-   #define NUMTHRDS 4
-   #define VECLEN 100000
+#include <pthread.h>
+#include <stdlib.h>   
+#include <stdio.h>
+#define NUMTHRDS 4
+#define VECLEN 100000
    pthread_t callThd[NUMTHRDS];
    double *array_a;
    double *array_b;
    double big_sum;
    int veclen;
-   void *dotprod(void *arg)
+   
+
+    void *dotprod(void *arg)
     {
      /* ... */
      x = array_a;

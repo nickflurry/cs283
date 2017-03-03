@@ -50,7 +50,6 @@
        
       threadinfo->sum = sum;  
       strcpy(threadinfo->txt,messages[t]);
-    
       pthread_create(&threads[t],NULL, PrintHello, threadinfo);
       pthread_join(threads[t], NULL);
        /* ... */
