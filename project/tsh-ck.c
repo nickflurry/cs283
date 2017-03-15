@@ -190,7 +190,35 @@ void eval(char *cmdline)
         sigprocmask(SIG_BLOCK, &mask, NULL);
     
     
-    
+    // Everything from the cmd will get pased here. 
+    // so the basic idea is to handle everything here and see 
+    // where it will get sent to for evaluation after seeing if 
+    // it is built-in. (already done buit-in check.)
+    // 
+    // Also will need to checck for '|' and  '>'  
+    // I am thinking this can be done with fileio
+    // and possiblely dup(first arg, second arg) so the 
+    // output from one goes to the other. Not sure if these are actually needed
+    // does not say in PDF. 
+    //
+    // Will also have to fork a child for every new process 
+    // after child is forked the PID needs to be added to list of 
+    // jobs. 
+    //
+    // More may be added when actully coded and tested. 
+
+
+    //Forking 
+    pid = fork();
+
+    if (pid == 0){
+        sigprocmask(SIG_UNBLOCK, &mask, NULL); 
+    //
+        if(execvp(argv[0], argv) < 0){
+            printf("Command not found\n"); 
+            exit(1); 
+        }
+    } 
     
     }
 
@@ -264,18 +292,54 @@ int parseline(const char *cmdline, char **argv)
 /*
 * builtin_cmd - If the user has typed a built-in command then execute
 *    it immediately.
+*    
+*    Returns 0 if not a built in. 
+*    Returns 1 if       built in. 
 */
 int builtin_cmd(char **argv)
  {
-  return 0;
-  /* not a builtin command */
- }
+    if (!strcmp(argv[0], "quit")){
+        exit(0); 
+    } else if (!strcmp("bg", argv[0]) || !(strcmp("fg", argv[0]))) {
+        do_bgfg(argv);
+        return 1;
+    } else if (!strcmp("jobs",argv[0])){
+        listjobs(jobs);
+        return 1; 
+    } else if (!strcmp("&", argv[0])){
+        return 1;
+    }
+
+    return 0; /* not a builtin command */
+ } // Still need to test
 
 /*
 * do_bgfg - Execute the builtin bg and fg commands
 */
 void do_bgfg(char **argv)
  {
+    int jobId; 
+    pid_t pid; 
+    struct job_t * job; 
+
+    if( argv[1] == NULL ){ // Nothing passed to bg | fg
+        printf("%s requires PID or %%jobid argument\n", argv[0]);
+		return;
+    }
+
+    //Need to check if a job id is given AKA '%'
+    //
+    //Check if process id can do so if arg[1] is a digit
+    // and pass it to job_t. 
+    //
+    // if none of those what is it see if it should be killed. 
+    //  if so kill fg | bg 
+    //
+    //  after you got the id see if it is bg | fg 
+    //  if fg pass to the FG state 
+    //
+    //  if BG pass to the BG state and print what was passed. 
+    //
   return;
  }
 
@@ -284,8 +348,11 @@ void do_bgfg(char **argv)
 */
 void waitfg(pid_t pid)
  {
-  return;
- }
+     while(pid == fgpid(jobs))
+     {
+         sleep(0);
+     }
+ } // Still need to test. But idea seems right. 
 
 /*****************
 * Signal handlers
@@ -300,7 +367,14 @@ void waitfg(pid_t pid)
 */
 void sigchld_handler(int sig)
  {
-  return;
+     int status; 
+     struct job_t * job;
+     pid_t pid; 
+     // While (There are still zombie child){ 
+     // Looks like it can be done with a waitpid function as the hint suggests. 
+     // delete job.  
+     // change state to new to kill next zombie; 
+     return;
  }
 
 /*
@@ -310,7 +384,16 @@ void sigchld_handler(int sig)
 */
 void sigint_handler(int sig)
  {
-  return;
+     pid_t pid = fgpid(jobs); // Get the pid
+     int status; 
+
+     if(pid != 0){
+        status = kill(-pid, SIGINT); // Send sigint with PID
+        if (status == -1){
+            printf("Error: Sigint failed");
+        }
+     }
+  return; //Still need to test. 
  }
 
 /*
@@ -320,7 +403,16 @@ void sigint_handler(int sig)
 */
 void sigtstp_handler(int sig)
  {
-  return;
+    pid_t pid = fgpid(jobs); // Get pid 
+    int status; 
+
+    if(pid != 0){
+        status = kill(-pid, SIGTSTP); // SEnd SIGSTP with the pid
+        if ( status == -1){
+            printf("Error: SIGSTOP failed");
+        }
+    }
+    return; // Still need to test. 
  }
 
 /*********************
