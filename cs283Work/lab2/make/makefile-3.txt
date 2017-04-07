@@ -1,0 +1,15 @@
+PROG=	test
+OBJS=	one.o main.o two.o three.o
+
+#CFLAGS=	-Wall -g  With this commented out there will not be the same debug warnings as makefile-2. 
+# the -Wall g will give all the warnings and the -g will give default debug information.  
+
+all: ${PROG}
+
+# This is the exact same as in makefile-2.txt The comments will be the same.
+${PROG}: ${OBJS}
+	@echo $@ depends on $?
+	${CC} ${LDFLAGS} ${OBJS} -o ${PROG}
+
+clean:
+	rm -f ls *.o  # The ls is interesting addition but will still work. 

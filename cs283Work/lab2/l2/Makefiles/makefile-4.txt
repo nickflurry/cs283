@@ -1,0 +1,15 @@
+#The only difference between this file and makefile-3.txt is the additon of CFlags variable  
+
+PROG=	test
+OBJS=	one.o main.o two.o three.o
+
+CFLAGS=	-Wall -g
+
+all: ${PROG}
+
+${PROG}: ${OBJS}
+	@echo $@ depends on $?
+	${CC} ${LDFLAGS} ${OBJS} -o ${PROG}
+
+clean:
+	rm -f ls *.o

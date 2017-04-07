@@ -1,0 +1,61 @@
+Problems
+
+Excerises
+2.1:
+
+	f = $s1 g = $s2 h = $s3 5 = $s4
+
+	sub	$t0, $s3, $s4
+	add $s1, $s2, $t0
+
+
+2.3: 
+	f = $s0, g = $s1, h = $s2, i = $s3 j = $s4   arrays A[] = $s6  B[] = $s7
+
+	B[8] = A[i−j];
+
+	sub  $t0, $s3, $s4 
+	sll  $t0, $t0, 2
+	add  $t0, $s6, $t0
+	lw   $t0, 0($t0)
+	sw   $t1, 32($s7)
+
+
+2.11: 
+	addi 	$t0, $s6, 4
+	OP: 001000  
+	RS: 22
+	RT: 8
+	Immediate Field: 4
+
+
+	add 	$t1, $s6, $0
+	OP: 0
+	RS: 22
+	RT: 9
+	Immediate Field: 0
+
+
+	sw 	$t1, 0($t0)
+	OP: 43
+	RS: 8
+	RT: 9
+	Immediate Field: 0
+
+
+	lw 	$t0, 0($t0)
+	OP: 35
+	RS: 8
+	RT: 8
+	Immediate Field: 0
+
+
+	add $s0, $t1, $t0
+	OP: 0
+	RS: 16
+	RT: 9
+	Immediate Field: 8
+
+
+
+

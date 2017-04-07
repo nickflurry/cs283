@@ -1,0 +1,29 @@
+7.6: 
+
+symbol | swap.o symbtab entry? | Symbol type | Module where defined | Section
+
+buf | yes | extern | main.o | .data
+
+bufp0 | yes | global | swap.o | .data
+
+bufp1 | yes | global | swap.o | .bss
+
+swap | yes | global | swap.o | .text
+
+temp | no | -- | -- | --
+
+incr | yes | global | swap.o | .text
+
+count | yes | local | swap.o | .data
+
+
+7.7:
+
+double x should be static double x. 
+It will not get overwritten in foo5.c
+
+7.9:
+
+There is already a main function in f0006.c you can not reuse main in mutiple times. There is only one global linker for main. Change it to static main in bar6.c. 
+
+

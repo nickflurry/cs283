@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="project"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="project">
+				<Option output="/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/project" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 project"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="project/fast">
+				<Option output="/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/project" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../lib/clang/8.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 project/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/stephenslatky/dev/classes/cs283/project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/stephenslatky/dev/classes/cs283/project/Github/othershell.c">
+			<Option target="project"/>
+		</Unit>
+		<Unit filename="/Users/stephenslatky/dev/classes/cs283/project/Writing-Your-Own-Unix-Shell/myint.c">
+			<Option target="project"/>
+		</Unit>
+		<Unit filename="/Users/stephenslatky/dev/classes/cs283/project/Writing-Your-Own-Unix-Shell/myspin.c">
+			<Option target="project"/>
+		</Unit>
+		<Unit filename="/Users/stephenslatky/dev/classes/cs283/project/Writing-Your-Own-Unix-Shell/mysplit.c">
+			<Option target="project"/>
+		</Unit>
+		<Unit filename="/Users/stephenslatky/dev/classes/cs283/project/Writing-Your-Own-Unix-Shell/mystop.c">
+			<Option target="project"/>
+		</Unit>
+		<Unit filename="/Users/stephenslatky/dev/classes/cs283/project/Writing-Your-Own-Unix-Shell/tsh.c">
+			<Option target="project"/>
+		</Unit>
+		<Unit filename="/Users/stephenslatky/dev/classes/cs283/project/linuxref.c">
+			<Option target="project"/>
+		</Unit>
+		<Unit filename="/Users/stephenslatky/dev/classes/cs283/project/myint.c">
+			<Option target="project"/>
+		</Unit>
+		<Unit filename="/Users/stephenslatky/dev/classes/cs283/project/myspin.c">
+			<Option target="project"/>
+		</Unit>
+		<Unit filename="/Users/stephenslatky/dev/classes/cs283/project/mysplit.c">
+			<Option target="project"/>
+		</Unit>
+		<Unit filename="/Users/stephenslatky/dev/classes/cs283/project/mystop.c">
+			<Option target="project"/>
+		</Unit>
+		<Unit filename="/Users/stephenslatky/dev/classes/cs283/project/tsh-ck.c">
+			<Option target="project"/>
+		</Unit>
+		<Unit filename="/Users/stephenslatky/dev/classes/cs283/project/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

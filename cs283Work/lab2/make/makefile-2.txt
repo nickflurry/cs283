@@ -1,0 +1,19 @@
+#Variables
+PROG=	test
+OBJS=	one.o main.o two.o three.o
+
+
+#default is to run the main program. IN this case "test".  
+all: ${PROG}
+
+${PROG}: ${OBJS} 
+	@echo $@ depends on $?   # prints out to terminal what files it depends on to complie
+	${CC}  ${OBJS} -o ${PROG}  # complies the main program with the flags -Wall -g. It uses the files it depends on in the print above
+	# and will create the complied file with the name of the program "test"
+
+.c.o:
+	$(CC) -c $(CFLAGS) -o $@ $<  # Complies each file in the objs since it will indiviualy call each. It complies with the flags 
+	# -Wall -g  
+	 
+clean:  # Removese every file that the make file could have created
+ 	rm -f ${PROG} ${OBJS}

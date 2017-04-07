@@ -1,0 +1,24 @@
+Connected!
+GET /index.html HTTP/1.1
+Host: www.google.com
+
+
+Message Sent!
+Reply received
+
+HTTP/1.1 200 OK
+Date: Fri, 24 Feb 2017 01:06:58 GMT
+Expires: -1
+Cache-Control: private, max-age=0
+Content-Type: text/html; charset=ISO-8859-1
+P3P: CP="This is not a P3P policy! See https://www.google.com/support/accounts/answer/151657?hl=en for more info."
+Server: gws
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: NID=97=ZEGKxXZSgv7o6Dfo92ioSE5ZbhYQNGBE3Ers5pY5KyvP0z-5PJTRd493kX4mag-Ez6YbGVc4cqEK5HG2tJ66UgMclvfz02UdI5EA5JhMXuWNSTPOwmLNkcA_5TEZB1LJgTh3uDXxvS92d9gv; expires=Sat, 26-Aug-2017 01:06:58 GMT; path=/; domain=.google.com; HttpOnly
+Accept-Ranges: none
+Vary: Accept-Encoding
+Transfer-Encoding: chunked
+
+8000
+<!doctype html><html itemscope="" itemtype="http://schema.org/WebPage" lang="en"><head><meta content="Search the world's information, including webpages, images, videos and more. Google has many special features to help you find exactly what you're looking for." name="description"><meta content="noodp" name="robots"><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"><meta content="/images/branding/googleg/1x/googleg_standard_color_128dp.png" itemprop="image"><title>Google</title><script>(function(){window.google={kEI:'MoevWPiWN4mMmQGbjrboCw',kEXPI:'750721,1351903,1352241,1352624,3700341,3700347,3700383,4029815,4031109,4032678,4036527,4038012,4039268,4043492,4045841,4048347,4052811,4062666,4065786,4069772,4071842,4072364,4072773,4073äEý
